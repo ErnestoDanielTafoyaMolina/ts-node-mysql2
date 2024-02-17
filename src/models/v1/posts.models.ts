@@ -18,3 +18,13 @@ export const InserPost = async( newPost:Post ):Promise<void> =>{
     const pool = await connect();
     await pool.query( queries.InsertIntoPosts, [newPost] );
 };
+
+export const UpdatePostWhereId = async ( id:string, post:Post ) => {
+    const pool = await connect();
+    await pool.query( queries.UpdatePostById, [post, id] )
+};
+
+export const DeletePostWhereID =async ( id:string ) => {
+    const pool = await connect();
+    await pool.query(queries.DeletePostById, id);
+};
